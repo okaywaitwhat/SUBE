@@ -1,0 +1,33 @@
+﻿
+[
+  {
+    "EntityList":
+    [  
+      "LINEA 159",
+      "LINEA 98",
+      "LINEA B",
+      "LINEA 372",
+      "LINEA 93",
+      "LINEA 219",
+      "LINEA 140",
+      "LINEA 39",
+      "FFCC URQUIZA",
+      "LINEA 619",
+      "LINEA D",
+      "LINEA 152",
+      "LINEA 603",
+      "LINEA 64",
+      "LINEA 111"
+    ],
+    "MovementTypeList":
+    [  
+      "Uso Transporte",
+      "Uso Transporte con Red SUBE 1",
+      "Carga",
+      "Carga Electronica",
+      "Uso Transporte con Red SUBE 2",
+      "Cobro Ingreso",
+      "Cobro Ingreso con Red SUBE 1"
+    ]
+  }
+]
