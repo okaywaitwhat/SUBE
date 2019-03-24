@@ -19,12 +19,13 @@ namespace SUBE
                 List<Movement> movements = JsonConvert.DeserializeObject<List<Movement>>(json);
 
                 var byMonth = movements
-                .GroupBy(x => new { Month = x.Date.Month, Year = x.Date.Year})
+                .GroupBy(x => new { Month = x.Date.Month, Year = x.Date.Year })
                 .ToDictionary(g => g.Key, g => g.Count());
 
-                foreach(var item in byMonth)
+
+                foreach (var item in byMonth)
                 {
-                    Console.WriteLine("Total viajes: {0} Mes: {1}/{2}", item.Value, item.Key.Month, item.Key.Year);
+                    Console.WriteLine("Total viajes: {0}      Mes: {1}/{2}", item.Value, item.Key.Month, item.Key.Year);
                 }
 
                 var JanuaryMovements = movements
