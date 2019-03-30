@@ -18,17 +18,24 @@ namespace SUBE
                 string json = r.ReadToEnd();
                 List<Movement> movements = JsonConvert.DeserializeObject<List<Movement>>(json);
 
-                var byMonth = movements
+                /*var byMonth = movements
                 .GroupBy(x => new { Month = x.Date.Month, Year = x.Date.Year })
                 .ToDictionary(g => g.Key, g => g.Count());
+                */              
 
-
-                foreach (var item in byMonth)
+                decimal total = 0;
+                foreach (var item in movements)
                 {
-                    Console.WriteLine("Total viajes: {0}      Mes: {1}/{2}", item.Value, item.Key.Month, item.Key.Year);
+                    if(Movement.IsCarga(item.Type))
+                    {
+                        total += item.Value;
+                    }
                 }
+                Console.WriteLine(total);
+                Console.WriteLine(movements.Count); // todo: filtrar carga elec
 
-                var JanuaryMovements = movements
+                /*
+                 * var JanuaryMovements = movements
                 .Where(m => m.Date.Month == 01);
 
                 decimal total = 0;
@@ -45,6 +52,7 @@ namespace SUBE
                 JanuaryOutGoings.Month = 1;
                 JanuaryOutGoings.TotalTravels = travelCount;
                 JanuaryOutGoings.Total = total;
+                */              
 
                 //Console.WriteLine("Mes: {0}  Cantidad de viajes: {1}  Total: {2}", JanuaryOutGoings.Month, JanuaryOutGoings.TotalTravels, JanuaryOutGoings.Total);
 
