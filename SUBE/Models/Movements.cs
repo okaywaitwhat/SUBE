@@ -31,7 +31,7 @@ namespace SUBE
 
             public static bool IsCarga(string type)
             {
-                return type != "Carga Electronica" && type != "Carga";
+                return type == "Carga Electronica" || type == "Carga";
             }
 
         }

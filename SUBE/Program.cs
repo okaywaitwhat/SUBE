@@ -18,15 +18,17 @@ namespace SUBE
                 string json = r.ReadToEnd();
                 List<Movement> movements = JsonConvert.DeserializeObject<List<Movement>>(json);
                 decimal total = 0;
+                int tripsCount = 0;
+
                 foreach (var item in movements)
                 {
-                    if(Movement.IsCarga(item.Type))
+                    if(!Movement.IsCarga(item.Type))
                     {
                         total += item.Value;
+                        tripsCount++;
                     }
                 }
-                Console.WriteLine(total);
-                Console.WriteLine(movements.Count); // todo: filtrar carga elec
+                Console.WriteLine("Total: ${0}, Movimientos: {1}", total, tripsCount);
             }
         }
     }
