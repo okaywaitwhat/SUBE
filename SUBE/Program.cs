@@ -20,15 +20,25 @@ namespace SUBE
                 decimal total = 0;
                 int tripsCount = 0;
 
-                foreach (var item in movements)
+
+                var trips = movements.Where(item => !Movement.IsCarga(item.Type));
+
+                var tripsByMonth = trips
+                .GroupBy(x => new { Day = x.Day, Month = x.Month, Year = x.Year })
+                .ToDictionary(g => g.Key, g => g.Count());
+
+
+                foreach (var trip in tripsByMonth)
                 {
-                    if(!Movement.IsCarga(item.Type))
-                    {
-                        total += item.Value;
-                        tripsCount++;
-                    }
+                    Console.WriteLine("Fecha: {0}/{1}/{2}, Viajes: {3}", trip.Key.Day, trip.Key.Month, trip.Key.Year, trip.Value);
                 }
-                Console.WriteLine("Total: ${0}, Movimientos: {1}", total, tripsCount);
+
+                foreach (var item in trips)
+                {
+                    total += item.Value;
+                    tripsCount++;
+                }
+                //Console.WriteLine("Total: ${0}, Movimientos: {1}", total, tripsCount);
             }
         }
     }
