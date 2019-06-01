@@ -13,7 +13,7 @@ namespace SUBE
     {
         static void Main(string[] args)
         {
-            using (StreamReader r = new StreamReader("Data/Movements.json"))
+            using (StreamReader r = new StreamReader("Data/May.json"))
             {
                 string json = r.ReadToEnd();
                 List<Movement> movements = JsonConvert.DeserializeObject<List<Movement>>(json);
@@ -38,7 +38,7 @@ namespace SUBE
                     total += item.Value;
                     tripsCount++;
                 }
-                //Console.WriteLine("Total: ${0}, Movimientos: {1}", total, tripsCount);
+                Console.WriteLine("Total: ${0}, Movimientos: {1}", total, tripsCount);
             }
         }
     }
